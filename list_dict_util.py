@@ -1,6 +1,6 @@
 import json
 
-class DistUtil():
+class ListDictUtil():
 	def __init__(self):
 		pass
 
