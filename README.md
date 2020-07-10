@@ -11,7 +11,7 @@ du = DistUtil()
 
 ## functions
 
-- Filter by name (filter_name)
+##### Filter by name (filter_name)
 
 `du.filter_name(obj: [list, dict], schema: [String])`
 
@@ -31,7 +31,7 @@ Sample schema:
 ]
 ```
 
-- Change keys (key_change)
+##### Change keys (key_change)
 
 `du.key_change(obj: [list, dict], keysToChange: list)`
 
@@ -40,7 +40,7 @@ keysToChange follows the format of:
 
 TODO: Errors when value is equal to an old key
 
-- Find the value of a specific key (find_value)
+##### Find the value of a specific key (find_value)
 
 Has two functions depending on number of inputs
 
