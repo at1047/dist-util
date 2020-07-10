@@ -1,5 +1,3 @@
-import json
-
 class DistUtil:
     def __init__(self):
         pass
@@ -62,50 +60,14 @@ class DistUtil:
         print(json.dumps(parsedWhiteList, indent=4))
         return self.filter_name_inner(obj, parsedWhiteList, parentDict)
 
-
-
-    # def filter_name_inner(self, obj, whiteList):
-    #     if isinstance(obj, list):  # obj must be list
-    #         for listEntry in obj:
-    #             self.filter_name_inner(listEntry, whiteList)
-
-    #     elif isinstance(obj, dict):  # obj must be dict
-    #         for key in [key for key in list(obj.keys()) if key not in whiteList]:
-    #             del obj[key]
-    #         for key in list(obj.keys()):
-    #             if whiteList[key] == 0:
-    #                 del whitelist[key]
-    #                 self.filter_name_inner(obj.get(key), whiteList)
-    #     return obj
-
-    # def filter_name(self, obj, whiteList):
-    #     return self.filter_name_inner(obj, whiteList)
-
-
-
-
     def key_change(self, obj, keysToChange):
         jsoned = json.dumps(obj)
         for keyPair in keysToChange.items():
             jsoned = jsoned.replace(keyPair[0], keyPair[1])
         return json.loads(jsoned)
 
-    # def filter_name_inner(self, obj, whiteList):
-    #     if isinstance(obj, list):  # obj must be list
-    #         for listEntry in obj:
-    #             self.filter_name_inner(listEntry, whiteList)
+        #TODO: Stop errors when a value is equal to an old key
 
-    #     elif isinstance(obj, dict):  # obj must be dict
-    #         for key in [key for key in list(obj.keys()) if key not in whiteList]:
-    #             del obj[key]
-    #         for key in list(obj.keys()):
-    #             if whiteList[key] == 0:
-    #               del whitelist[key]
-    #                 self.filter_name_inner(obj.get(key), whiteList)
-    #     return obj
-
-    # def filter_name(self, obj, whiteList):
-    #     return self.filter_name_inner(obj, whiteList)
 
     def find_value_diffkey_inner(self, obj, oldKey, oldValue, newKey, newValue):
         if isinstance(obj, list):  # obj must be list
@@ -140,103 +102,4 @@ class DistUtil:
             final = []
             return self.find_value_samekey_inner(obj, oldKey, final)
         else:
-            return self.find_value_diffkey_inner(obj, oldKey, value, newKey, final)
-
-
-
-
-
-# Use main() for testing cases
-
-def main():
-
-    # whiteList = ["id", "otherField", "newName", "otherName"]
-
-    # schemaTest1 = {
-    # 'id': 0,
-    # 'name': 0,
-    # 'otherField': 0
-    # 'newName': 0
-    # }
-
-    # schemaTest2 = [
-    # 'id',
-    # 'otherField#',
-    # 'name#innerName',
-    # 'newName'
-    # ]
-
-    testObj = [
-    {
-        "name": "john",
-        "class": {
-            "name": "3A",
-            "numberOfStudents": 10,
-            "role": None
-        },
-        "friends": [
-        {
-            "name": "sam",
-            "id": 10
-        },
-        {
-            "name": "susan",
-            "id": 20
-        }],
-        "location": {
-            "name": "NP",
-            "time": "morning",
-            "id": 1
-        }
-    },
-    {
-        "name": "mary",
-        "class": {
-            "name": "4A",
-            "numberOfStudents": 10,
-            "role": ["prefect", "librarian"]
-        },
-        "friends": ["name4", "name5", "name6"],
-        "location": {
-            "name": "SSP",
-            "time": "afternoon",
-            "id": 2
-        }
-
-    },
-    {
-        "name": "jack",
-        "class": {
-            "name": "5",
-            "numberOfStudents": 10,
-            "role": "librarian"
-        },
-        "friends": "name7",
-        "location": {
-            "name": "MK",
-            "time": "evening",
-            "id": 3
-        }
-    }]
-
-    schema = [
-        "class#",
-        "friends",
-        "friends#name",
-        "location",
-        "location#name",
-        "location#id"
-    ]
-
-    # ParentDirectory#Name#
-
-    du = DistUtil()
-    print(json.dumps(du.filter_name(testObj, schema), indent=4))
-    # To get all values for key: [d["nameToWL"] for d in whiteList]
-
-
-
-if __name__ == "__main__":
-    main()
-
-                
+            return self.find_value_diffkey_inner(obj, oldKey, oldValue, newKey, final)
