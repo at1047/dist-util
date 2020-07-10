@@ -11,12 +11,12 @@ du = DistUtil()
 
 ## functions
 
-##### Filter by name (filter_name)
+#### Filter by name (filter_name)
 
 `du.filter_name(obj: [list, dict], schema: [String])`
 
 schema items follow the format of "{parent_directory}#{name}, 
-where parent_directory is the parent of the key you want to whitelist (None if top layer)
+where parent_directory is the parent of the key you want to whitelist ('None' if top layer)
 Add # to the end of string if you do not wish to recurse into the key's value (ex. "parent_directory#name#")
 
 Sample schema:
@@ -31,7 +31,7 @@ Sample schema:
 ]
 ```
 
-##### Change keys (key_change)
+#### Change keys (key_change)
 
 `du.key_change(obj: [list, dict], keysToChange: list)`
 
@@ -40,7 +40,7 @@ keysToChange follows the format of:
 
 TODO: Errors when value is equal to an old key
 
-##### Find the value of a specific key (find_value)
+#### Find the value of a specific key (find_value)
 
 Has two functions depending on number of inputs
 
