@@ -5,7 +5,6 @@ class DistUtil:
     def parse_white_list(self, whiteList):
         procWhiteList = []
         for string in whiteList:
-            # Declaring base case
             parentDict = None
             unwrap = True
             nameToWL = None
@@ -31,11 +30,11 @@ class DistUtil:
         return procWhiteList
 
     def filter_name_inner(self, obj, whiteList, parentDict):
-        if isinstance(obj, list):  # obj must be list
+        if isinstance(obj, list):
             for listEntry in obj:
                 self.filter_name_inner(listEntry, whiteList, parentDict)
 
-        elif isinstance(obj, dict):  # obj must be dict
+        elif isinstance(obj, dict):
             toDelete = []
             for dictKey in obj.keys():
                 keep = False
@@ -56,7 +55,6 @@ class DistUtil:
     def filter_name(self, obj, whiteList):
         parentDict = "None"
         parsedWhiteList = self.parse_white_list(whiteList)
-        # print(json.dumps(obj, indent=4))
         print(json.dumps(parsedWhiteList, indent=4))
         return self.filter_name_inner(obj, parsedWhiteList, parentDict)
 
@@ -86,7 +84,7 @@ class DistUtil:
         return newValue
 
     def find_value_samekey_inner(self, obj, oldKey, final):
-        if isinstance(obj, list):  # obj must be list
+        if isinstance(obj, list):
             lambda listEntry: self.find_value_samekey_inner(listEntry, oldKey, final), (listEntry for listEntry in obj)
 
         elif isinstance(obj, dict):
