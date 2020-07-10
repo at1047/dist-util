@@ -1,13 +1,13 @@
-#list_dict_util
+*list_dict_util*
 Utilities for manipulating lists and dictionaries in python, especially from json.loads()
 
 - Initialising
 
-from list_dict_util import DistUtil 
-du = DistUtil()
+**from list_dict_util import DistUtil**
+**du = DistUtil()**
 
 
-##functions
+*functions*
 - Filter by name (filter_name)
 
 **du.filter_name(obj: [list, dict], schema: [String])**
@@ -39,10 +39,10 @@ TODO: Errors when value is equal to an old key
 
 Has two functions depending on number of inputs
 
-**u.find_value(obj: [list, dict], key: String):**
+**du.find_value(obj: [list, dict], key: String):**
 
 returns a list of values with the matching key from obj
 
-**return du.find_value(obj: [list, dict], oldKey: String, oldValue=None: String, newKey=None: String):**
+**du.find_value(obj: [list, dict], oldKey: String, oldValue=None: String, newKey=None: String):**
 
 returns a value of the value from newKey inside the dictionary that contains the key value pair of oldKey: oldValue
